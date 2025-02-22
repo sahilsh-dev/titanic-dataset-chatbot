@@ -1,10 +1,11 @@
+import os
 import streamlit as st
 import requests
 import base64
 from PIL import Image
 from io import BytesIO
 
-BACKEND_URL = "http://localhost:8000/ask"
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000/ask")
 
 st.title("Titanic Dataset Chatbot 🚢")
 st.write("Ask questions about the Titanic passenger dataset!")
