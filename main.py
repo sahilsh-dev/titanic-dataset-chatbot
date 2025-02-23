@@ -55,7 +55,7 @@ Examples:
     )
 
     try:
-        text_answer = agent.run(question)
+        text_answer = agent.invoke({"input": question})
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -66,4 +66,4 @@ Examples:
             plot_base64 = base64.b64encode(f.read()).decode("utf-8")
         os.remove(plot_filename)
 
-    return {"text": text_answer, "plot": plot_base64}
+    return {"text": text_answer.get("output"), "plot": plot_base64}
