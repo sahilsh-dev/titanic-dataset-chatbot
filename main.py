@@ -20,6 +20,10 @@ model = init_chat_model("llama3-70b-8192", model_provider="groq")
 class QuestionRequest(BaseModel):
     question: str
 
+@app.get("/")
+async def home():
+    return {"message": "Welcome to the Titanic dataset assistant!"}
+
 @app.post("/ask")
 async def ask_question(request: QuestionRequest):
     question = request.question
